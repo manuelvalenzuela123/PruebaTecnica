@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas Prueba</title>
+
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- AdminLTE-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/css/adminlte.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+<body>
+
+    <div class="row mb-2 mt-1">
+        <div class="col-sm-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light"> 
+                                                    
+                    <div class="d-flex justify-content-between">
+
+                        <h3 class="card-title font-weight-bold" style="font-size: 24px; font-family: 'Arial', sans-serif;">Consultas</h3>
+
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <a href="{% url 'InicioVista' %}" class="btn btn-primary">
+                                    <i class="fas fa-arrow-left me-2"></i>
+                                    Regresar
+                                </a>
+                            </div>
+                        </div><!-- /.d-flex justify -->
+
+
+                    </div><!-- /.d-flex -->
+
+                </div><!-- /.card header -->
+            </div><!-- /.card card -->
+
+
+            <div class="container mt-5">
+                <div class="row">
+
+                    <!-- Aeropuerto Mayor Movimiento Por Anio -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-success text-white">
+                                <h3 class="card-title float-left">Aeropuerto de mayor movimiento por año</h3>
+                            </div>
+
+                            <div class="card-header bg-white text-white">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <label class="mr-2">Año:</label>
+                                    <select class="form-control" id="SelectAnioAeropuerto" name="SelectAnioAeropuerto" style="font-size: 14px; width: 85px; max-width:85px;">
+                                        
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Total de Movimientos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tablaAeropuertoMayorMovimiento">
+                                            {% for row in datos.AeropuertoMayorMovimiento %}
+                                            <tr>
+                                                <td>{{ row.NombreAeropuerto }}</td>
+                                                <td>{{ row.TotalMovimientos }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- -->
+
+
+                    <!-- Aerolinea Mayor Numero Vuelos Por Anio -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-primary text-white">
+                                <h3 class="card-title float-left">Aerolínea de mayor número de vuelos realizados por año</h3>
+                            </div>
+
+                            <div class="card-header bg-white text-white">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <label class="mr-2">Año:</label>
+                                    <select class="form-control" id="SelectAnioAerolinea" name="SelectAnioAerolinea" style="font-size: 14px; width: 85px; max-width:85px;">
+                                        
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Total de Vuelos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tablaAerolineaMayorVuelos">
+                                            {% for row in datos.AerolineaMayorVuelos %}
+                                            <tr>
+                                                <td>{{ row.NombreAerolinea }}</td>
+                                                <td>{{ row.TotalVuelos }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- -->
+
+
+                </div>
+            </div>
+
+
+            <div class="container mt-3">
+                <div class="row">
+
+                    <!-- Dia con mayor numero de Vuelos -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-info text-white">
+                                <h3 class="card-title float-left">Día con mayor número de vuelos</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Total de Vuelos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for row in datos.DiaMayorVuelos %}
+                                            <tr>
+                                                <td>{{ row.Dia }}</td>
+                                                <td>{{ row.TotalVuelos }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- -->
+
+
+                    <!-- Aerolinea Mayor Dos Vuelos x Dia -->
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-danger text-white">
+                                <h3 class="card-title float-left">Aerolínea mayor de dos vuelos por día</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+
+                                    {% if datos.AerolineaDosVuelosDia %}
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre Aerolinea</th>
+                                                    <th>Dia</th>
+                                                    <th>Total de Vuelos</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for row in datos.AerolineaDosVuelosDia %}
+                                                <tr>
+                                                    <td>{{ row.NombreAerolinea }}</td>
+                                                    <td>{{ row.Dia }}</td>
+                                                    <td>{{ row.TotalVuelos }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <span>No hay datos disponibles.</span>
+                                    {% endif %}
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- -->
+
+                </div>
+            </div>
+
+
+
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+
+    
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- AdminLTE JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.1.0/js/adminlte.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+
+        $(document).ready(function() {
+
+
+            $('#SelectAnioAeropuerto').change(function() {
+                var anio = $(this).val();
+                $.ajax({
+                    url: 'Consultas',  
+                    type: 'GET',
+                    data: {
+                        'Bandera': 'JS',
+                        'AnioParam': anio
+                    },
+                    success: function(response) {
+
+                        $('#tablaAeropuertoMayorMovimiento').empty();
+                        if (response.AeropuertoMayorMovimiento.length > 0) {
+                            response.AeropuertoMayorMovimiento.forEach(function(row) {
+                                var rowHTML = `
+                                    <tr>
+                                        <td>${row.NombreAeropuerto}</td>
+                                        <td>${row.TotalMovimientos}</td>
+                                    </tr>
+                                `;
+                                $('#tablaAeropuertoMayorMovimiento').append(rowHTML);
+                            });
+                        } else {
+                            
+                            var noDataHTML = `
+                                <tr>
+                                    <td colspan="2"><span>No hay datos disponibles.</span></td>
+                                </tr>
+                            `;
+                            $('#tablaAeropuertoMayorMovimiento').append(noDataHTML);
+                        }
+                    },
+                    error: function(xhr, errmsg, err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                    }
+
+                });
+            });
+
+            $('#SelectAnioAerolinea').change(function() {
+                var anio = $(this).val();
+                $.ajax({
+                    url: 'Consultas',  
+                    type: 'GET',
+                    data: {
+                        'Bandera': 'JS',
+                        'AnioParam': anio
+                    },
+                    success: function(response) {
+
+                        $('#tablaAerolineaMayorVuelos').empty();
+                        if (response.AerolineaMayorVuelos.length > 0) {
+                            response.AerolineaMayorVuelos.forEach(function(row) {
+                                var rowHTML = `
+                                    <tr>
+                                        <td>${row.NombreAerolinea}</td>
+                                        <td>${row.TotalVuelos}</td>
+                                    </tr>
+                                `;
+                                $('#tablaAerolineaMayorVuelos').append(rowHTML);
+                            });
+                        } else {
+                            
+                            var noDataHTML = `
+                                <tr>
+                                    <td colspan="2"><span>No hay datos disponibles.</span></td>
+                                </tr>
+                            `;
+                            $('#tablaAerolineaMayorVuelos').append(noDataHTML);
+                        }
+                    },
+                    error: function(xhr, errmsg, err) {
+                        console.log(xhr.status + ": " + xhr.responseText);
+                    }
+
+                });
+            });
+            
+
+        });
+
+    </script>
+</body>
+</html>
+
